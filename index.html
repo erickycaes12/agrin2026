@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 - Futuro Sustentável</title>
+    <style>
+        /* ====== CSS ====== */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 1rem;
+            padding: 1.5rem;
+            width: 30%;
+            min-width: 250px;
+            border-top: 5px solid #81c784;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #1b5e20;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #3e2723;
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .simulador {
+            background: #e8f5e9;
+            border: 2px dashed #81c784;
+            border-radius: 8px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .simulador input {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 1rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .simulador button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .simulador button:hover {
+            background-color: #1b5e20;
+        }
+
+        .simulador button:active {
+            transform: scale(0.98);
+        }
+
+        #resultado {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sucesso {
+            background-color: #c8e6c9;
+            color: #256029;
+            border: 1px solid #81c784;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+
+            .simulador {
+                width: 95%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Agro Forte, Futuro Sustentável</h1>
+        <p>O equilíbrio perfeito entre a produção e a preservação ambiental</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>🚜 Produção Inteligente</h2>
+            <p>Uso de drones, sensores IoT e agricultura de precisão para evitar o desperdício de água e insumos.</p>
+        </section>
+
+        <section class="card">
+            <h2>🌱 Sustentabilidade Prática</h2>
+            <p>Técnicas como plantio direto, rotação de culturas e recuperação do solo mantêm o ecossistema vivo.</p>
+        </section>
+
+        <section class="card">
+            <h2>💧 Preservação dos Recursos</h2>
+            <p>Proteção de nascentes, captação de água da chuva e fontes de energia limpa (solar e eólica) nas fazendas.</p>
+        </section>
+
+        <!-- Seção Interativa do Simulador -->
+        <section class="simulador">
+            <h2>🧮 Simulador de Economia de Água</h2>
+            <p>Veja quantos litros de água a irrigação inteligente economiza por hectare:</p>
+            <input type="number" id="hectares" placeholder="Digite a quantidade de hectares (Ex: 5)" min="1">
+            <button onclick="calcularEconomia()">Calcular Impacto</button>
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto desenvolvido para o Concurso Agrinho 2026</p>
+    </footer>
+
+    <script>
+        // ====== JavaScript ======
+        function calcularEconomia() {
+            const hectaresInput = document.getElementById('hectares').value;
+            const resultadoDiv = document.getElementById('resultado');
+
+            const hectares = Number(hectaresInput);
+
+            if (hectaresInput === '' || isNaN(hectares) || hectares <= 0) {
+                resultadoDiv.innerHTML = "❌ Por favor, insira um número válido de hectares.";
+                resultadoDiv.style.color = "#c62828";
+                resultadoDiv.style.backgroundColor = "#ffebee";
+                resultadoDiv.style.border = "1px solid #ef5350";
+                resultadoDiv.style.padding = "15px";
+                resultadoDiv.style.borderRadius = "8px";
+                return;
+            }
+
+            const litrosEconomizados = hectares * 15000;
+
+            resultadoDiv.innerHTML = `🌱 Ao utilizar tecnologia de irrigação inteligente em sua fazenda, você deixará de desperdiçar aproximadamente <strong>${litrosEconomizados.toLocaleString('pt-BR')} litros</strong> de água por mês!`;
+            resultadoDiv.style.color = "#256029";
+            resultadoDiv.style.backgroundColor = "#c8e6c9";
+            resultadoDiv.style.border = "1px solid #81c784";
+            resultadoDiv.style.padding = "15px";
+            resultadoDiv.style.borderRadius = "8px";
+        }
+    </script>
+</body>
+</html>
